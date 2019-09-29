@@ -58,7 +58,7 @@ int main() {
   cout << pLength << endl;
 
   //Test for palindrome, finally
-  for (int i = 0; i < sizeof(pLength / 2) + 1; i++) {
+  for (int i = 0; i < sizeof(pLength) + 1; i++) {
     cout << (int)pInput[i] << ", " << (int)pInput[pLength - 1] << endl;
     if ((int)pInput[i] != (int)pInput[pLength - i])
       pal = false;
