@@ -4,6 +4,7 @@
  * @version alpha 1.0
  */
 #include <iostream>
+#include <cstring>
 
 using namespace std;
 
@@ -16,11 +17,9 @@ int main() {
   int lim = 80;
   //Offset between input and pInput in a given array
   int offs = 0;
-  //Actual phrase length
-  int pLength;
 
-  //User input (it's really big in the hopes that nobody will type in something higher than the 16-bit integer limit)
-  char input[65535];
+  //User input (it's really big in the hopes that nobody will type in anything higher)
+  char input[2000];
   //Parsed user input, will only take the first 80 characters
   char pInput[lim];
 
@@ -33,7 +32,7 @@ int main() {
   //Get input
   cout << "Greetings traveller! You have happened upon your local Whole Foods." << endl
        << "Enter a phrase and our trademark skinny white boy will tell you if it\'s a palindrome." << endl;
-  cin.getline(input, 5000);
+  cin.getline(input, 2000);
 
   //Convert to lowercase and then destroy all other data
   for (int i = 0; i <= sizeof(input); i++) {
@@ -49,33 +48,20 @@ int main() {
     else offs++;
   }
 
-  //Find actual phrase length
-  for (int i = lim; i > 0; i--) {
-    if (pInput[i] != 32)
-      pLength = i;
-  }
-
-  cout << pLength << endl;
+  cout << strlen(pInput) << endl;
 
   //Test for palindrome, finally
-  for (int i = 0; i < sizeof(pLength / 2) + 1; i++) {
-    cout << (int)pInput[i] << ", " << (int)pInput[pLength - 1] << endl;
-    if ((int)pInput[i] != (int)pInput[pLength - i])
+  for (int i = 0; i < strlen(pInput); i++) {
+    cout << (int)pInput[i] << ", " << (int)pInput[strlen(pInput)] << endl;
+    if ((int)pInput[i] != (int)pInput[strlen(pInput) - i])
       pal = false;
     else
       cout << "Same" << endl;
   }
 
   //Return the results!
-	 if (pal == false)
-	   cout << "This phrase is not a palindrome." << endl;
-	 else
-	   cout << "This phrase indeed is a palindrome." << endl;
-	   
-  
-  //Prints parsed input
-  /*
-    for (int i = 0; i < sizeof(pInput); i++)
-    cout << pInput[i] << ", ";
-  */
+  if (pal == false)
+    cout << "This phrase is not a palindrome." << endl;
+  else
+    cout << "This phrase indeed is a palindrome." << endl;
 }
