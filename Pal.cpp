@@ -1,7 +1,8 @@
 /**
  * This program takes a user input, then tests if it is a palindrome.
  * @author Greggory Hickman, September 2019
- * @version alpha 1.0
+ * @contributer Steph for showing me how using 2 cstrings can be useful because I didn't believe Mr. G at first when he said that was a good idea
+ * @version 1.0
  */
 #include <iostream>
 #include <cstring>
